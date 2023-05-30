@@ -1,0 +1,22 @@
+name: Application Workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  deploy-app-code:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ./.github/workflows/composite/install-aws-cli-v2
+    - name: Docker Build
+      run: echo 'docker build ...'
+    - name: Docker Tag
+      run: echo 'docker tag ...'
+    - name: Docker Push
+      run: echo 'docker push ...'
+    - name: AWS Lambda Update
+      run: echo 'aws lambda update-function-code ...'

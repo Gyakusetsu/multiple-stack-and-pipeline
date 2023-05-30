@@ -1,0 +1,21 @@
+name: Application Stack Workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  deploy-app-stack:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ./.github/workflows/composite/install-aws-cli-v2
+    - uses: ./.github/workflows/composite/install-python-cdk
+    - name: CDK Deploy Application Stack
+      run: | 
+        echo 'cdk synth AppStack'
+        echo 'cdk diff AppStack'
+        echo 'cdk deploy AppStack'
+      

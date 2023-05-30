@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: .github/workflows/composite/install-python-cdk
+    - uses: ./.github/workflows/composite/install-python-cdk
     - name: CDK Deploy Infra Stack
       run: | 
         echo 'cdk synth InfraStack'

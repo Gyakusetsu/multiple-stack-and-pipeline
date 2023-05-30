@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: ./.github/workflows/composite/install-python-cdk
+    - name: Install Python CDK
+      uses: ./.github/workflows/composite/install-python-cdk
     - name: CDK Deploy Application Stack
       run: | 
         echo 'cdk synth AppStack'

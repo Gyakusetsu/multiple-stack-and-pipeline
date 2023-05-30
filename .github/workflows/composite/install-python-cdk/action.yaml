@@ -1,0 +1,20 @@
+name: Install Python CDK
+description: Install Python CDK
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9.x'
+    - name: Install CDK pip
+      run: pip install aws-cdk-lib
+      shell: bash
+    - name: Setup Node NPM
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install CDK Npm
+      run: npm install -g aws-cdk
+      shell: bash

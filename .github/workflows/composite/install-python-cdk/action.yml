@@ -3,13 +3,17 @@ description: Install Python CDK
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3 # CDK command is installed as NPM module
+    - name: Install CDK from npm
+      uses: actions/setup-node@v3 # CDK command is installed as NPM module
       with:
         node-version: 18
-      run: npm install -g aws-cdk
+      run: |
+        npm install -g aws-cdk
       shell: bash
-    - uses: actions/setup-python@v4
+    - name: Install Python CDK lib
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10' 
-      run: pip install aws-cdk-lib
+      run: |
+        pip install aws-cdk-lib
       shell: bash
